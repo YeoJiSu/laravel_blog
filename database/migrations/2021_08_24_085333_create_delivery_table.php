@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBuysTable extends Migration
+class CreateDeliveryTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class CreateBuysTable extends Migration
      */
     public function up()
     {
-        Schema::create('buys', function (Blueprint $table) {
+        Schema::create('delivery', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->string('address')->comment('주소');
+            $table->string('type')->comment('배송종류');
+            $table->bigInteger('price')->comment('배송비');
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ class CreateBuysTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('buys');
+        Schema::dropIfExists('delivery');
     }
 }

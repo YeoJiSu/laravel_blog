@@ -13,21 +13,26 @@ class CreateGoodsTable extends Migration
      */
     public function up()
     {
-        Schema::table('goods', function (Blueprint $table) {
-            $table->foreign('owner_id')->references('id')->on('owner');
+        Schema::create('goods', function (Blueprint $table) {
+            //$table->foreign('owner_id')->references('id')->on('owner');
             //$table->bigincrements('id');
-            $table->id();
-            $table->Boolean('isGlass')->default(0);// 안경이나 선글라스냐 
+            $table->bigincrements('id');
+            $table->boolean('is_glass')->default(0);// 안경이나 선글라스냐 
             $table->string('name')->comment("상품명");
-            $table->string('price')->comment("가격");
-            $table->string('img_url');
-            $table->Boolean('isCustom')->default(0);
-            $table->Boolean('isNew')->default(0);
-            $table->Boolean('isBest')->default(0);
-            $table->Boolean('isSoldOut')->default(0);
+            $table->bigInteger('price')->comment("가격"); 
+            $table->boolean('is_custom')->default(0);
+            $table->boolean('is_new')->default(0);
+            $table->boolean('is_best')->default(0);
+            $table->boolean('is_soldout')->default(0);
+            $table->boolean('is_public')->default(0);
+            $table->unsignedBigInteger('like_id');
+            $table->unsignedBigInteger('bag_id');
+            $table->unsignedBigInteger('buy_id');
+            $table->unsignedBigInteger('owner_id');
             $table->foreign('like_id')->references('id')->on('likes');
-            $table->foreign('bag_id')->references('id')->on('bag');
-            $table->foreign('buy_id')->references('id')->on('buy');
+            $table->foreign('bag_id')->references('id')->on('bags');
+            $table->foreign('buy_id')->references('id')->on('buys');
+            $table->foreign('owner_id')->references('id')->on('owner');
             $table->rememberToken();
             $table->timestamps();
         });

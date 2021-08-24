@@ -20,9 +20,9 @@ class CreateUsersTable extends Migration
             $table->string('password')->comment("비밀번호");;
             $table->string('email')->unique()->comment("이메일");
             $table->string('tel')->unique()->comment("연락처");
-            $table->Boolean('private')->default(0)->comment("개인정보 확인 유무");
-            $table->Boolean('third_party')->default(0)->comment("제3자 제공 유무");
-            // $table->Boolean('permission')->default(0)->comment("권한"); //사용자냐 관리자냐?? -> 그냥 관리자 테이블 따로...!
+            $table->boolean('private')->default(0)->comment("개인정보 확인 유무");
+            $table->boolean('third_party')->default(0)->comment("제3자 제공 유무");
+            $table->string('address')->comment("주소");
             $table->rememberToken();
             $table->timestamps();
         });

@@ -18,6 +18,8 @@ class CreateDetailsTable extends Migration
             $table->unsignedBigInteger('goods_id');
             $table->foreign('goods_id')->references('id')->on('goods');
             $table->string('img_url');
+            $table->integer('sequence');
+            $table->boolean('is_public')->comment('공개유무');
             $table->timestamps();
         });
     }
