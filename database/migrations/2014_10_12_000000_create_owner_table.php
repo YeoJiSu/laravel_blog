@@ -14,12 +14,10 @@ class CreateOwnerTable extends Migration
     public function up()
     {
         Schema::create('owner', function (Blueprint $table) {
-            $table->id();
-            $table->string('owner_name')->comment("이름");
-            $table->string('owner_id')->unique()->comment("아이디");
-            $table->string('password')->comment("비밀번호");;
-            $table->string('email')->unique()->comment("이메일");
-            $table->string('tel')->unique()->comment("연락처");
+            $table->bigincrements('id');
+            $table->string('name')->comment("이름");
+            $table->string('id')->unique()->comment("아이디");
+            $table->string('password')->comment("비밀번호");
             $table->rememberToken();
             $table->timestamps();
         });
