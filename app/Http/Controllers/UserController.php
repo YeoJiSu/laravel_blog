@@ -12,9 +12,15 @@ class UserController extends Controller
     public function getUser($id) {
 
         $user = User::find($id);
-        $user_to_questions = $user->user_to_questions;
+        $only_user = User::find($id);
 
-        return $user_to_questions;
+        // 18번째 라인을 주석으로 없애서 실행해보고 결과 비교하기
+        $questions = $user->user_to_questions;
+
+        // 22번째 라인의 $user를 $only_user와 $questions 로 변경해서 결과 비교하기
+        return response()->json([
+            'data' => $questions
+        ]);
     }
 
     public function createUser(){
