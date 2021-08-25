@@ -5,16 +5,21 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Owner extends Model
+class Good extends Model
 {
     use HasFactory;
-    
-    protected $table = 'owner';
-    //table이름 단수라고 명시해야함.
     protected $fillable = [
+        'is_glass',
         'name',
+        'price',
+        'is_custom',
+        'is_new',
+        'is_best',
+        'is_public',
+        'like_id',
+        'bag_id',
+        'buy_id',
         'owner_id',
-        'password',
         'created_at',
         'updated_at',
     ];
@@ -25,8 +30,5 @@ class Owner extends Model
      * @var array
      */
     protected $hidden = [
-        'password',
-        'remember_token',
     ];
-
 }

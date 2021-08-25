@@ -5,18 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Owner extends Model
+class Password_reset extends Model
 {
     use HasFactory;
-    
-    protected $table = 'owner';
-    //table이름 단수라고 명시해야함.
     protected $fillable = [
-        'name',
-        'owner_id',
-        'password',
+        'email',
+        'token',
         'created_at',
-        'updated_at',
     ];
 
     /**
@@ -25,8 +20,6 @@ class Owner extends Model
      * @var array
      */
     protected $hidden = [
-        'password',
-        'remember_token',
+        'token'
     ];
-
 }
