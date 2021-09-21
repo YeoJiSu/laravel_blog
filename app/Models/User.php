@@ -63,4 +63,9 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    // 1명의 유저가 작성한 N개의 질문 데이터
+    public function user_to_questions() {
+        return $this->hasMany('App\Models\Question', 'user_id');
+    }
 }
